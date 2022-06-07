@@ -1,0 +1,157 @@
+import println from <stdlib/io>;
+
+// Class is an essential part of OOP.
+
+class biodata {
+    var name: str = "Anoki";
+    var age: int  = 14;
+    var name_two: str = name; // Refers to 'name' (Local scope).
+};
+
+void run()
+{
+    println(biodata.name);
+};
+
+var name: str = "William"; // A global variable.
+var age: int = 16; // A global variable.
+
+// You can extend a class.
+class extend_biodata extend biodata {
+
+    var city: str = "Bandung";
+
+    var name_two: str   = e1::name;   // Refers to biodata.name
+    var age_two: int    = e1::age;    // Refers to biodata.age
+
+    var name_three: str = pg::name;   // Refers to a global variable 'name';
+    var age_three: int  = pg::age;    // Refers to a global variable 'age'.
+
+    // That double colon things are called scope modifiers.
+    // You will learn more about scope modifiers later on.
+
+};
+
+void run()
+{
+    println(extend_biodata.name); // Anoki.
+    println(extend_biodata.city); // Bandung.
+};
+
+
+
+
+
+
+
+
+// You can make a new class (dynamic class) from a class (static class).
+
+// Static class.
+class biodata {
+    static var name: str = "Anoki";
+    dynamic var age: int = 15;
+    staticonly var city: str = "Bandung";
+
+};
+
+void run()
+{
+    // new_class is a dynamic class.
+    var new_class: dc = new biodata();
+
+    println(biodata.name) // "Anoki".
+    println(new_class.name) // "Anoki".
+
+    println(biodata.age) // ERROR.
+    println(new_class.age) // 15.
+
+    println(biodata.city) // "Bandung".
+    println(new_class.city) // ERROR.
+
+};
+
+// There is this thing called 'modifiers'.
+
+// static: Variable is available both on static and dynamic class.
+// dynamic: Available only on dynamic class.
+// staticonly: Same as dynamic, but this time for static class only.
+
+
+
+
+
+
+
+
+// Now, how about public, protected, and private?
+
+class biodata {
+
+    private var name: str = "Anoki";
+    protected var age: int = 15;
+    public var city: str = "Bandung";
+    
+    public var name_two: str = ::name; // OK.
+
+};
+
+class extend_biodata extend biodata {
+    var name_two: str = #name; // NOT OK.
+    var age_two: int  = #age;  // OK.
+    var city_two: str = #city; // OK.
+};
+
+void run()
+{
+    
+    var name: str = biodata.name; // ERROR.
+    var age: int  = biodata.age;  // ERROR.
+    var city: str = biodata.city; // OK.
+};
+
+// public: Available to everything outside your class and to your class.
+// protected: Available to your class and to class that extends your class.
+// private: Only available to your class.
+
+// Default modifiers for a variable declared without a modifier: public and static.
+
+
+
+
+
+
+
+
+// Methods.
+
+// A function inside a class is called a method.
+
+class a_class {
+    public var a_member: str = "Anoki";
+    public void a_method()
+    {
+        println(::a_member);
+    };
+};
+
+// Some special methods are available.
+// constructor: Will be called if a new dynamic class is created.
+// call: Will be called if a new dynamic class is created, then called.
+
+class a_class {
+    public void _constructor_(name: str)
+    {
+        println(name);
+    };
+    public void _call_(name: str)
+    {
+        println(name);
+    };
+};
+
+void run()
+{
+    var a_new_dynamic_class: dc = a_class("Anoki"); // Result: "Anoki".
+    a_new_dynamic_class("William");                 // Result: "William".
+};

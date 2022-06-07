@@ -1,0 +1,28 @@
+[general]
+name     = "cirata-tutorial"
+version  = "0.0.0-alpha1"
+author   = "anokidev"
+license  = "MIT"
+
+[info]
+category = "tutorial :: lang :: cirata"
+website  = "https://cirata.readthedocs.io"
+docs     = "https://cirata.readthedocs.io"
+
+[documents]
+readme   = "./README.md"
+license  = "./LICENSE.md"
+
+[system]
+version  = "0.0.0+"
+os       = {
+    win   = [true, "latest"],
+    mac   = [true, "latest"],
+    linux = [true, "latest"]
+}
+
+[dependencies]
+compile  = {}
+install  = {
+    stdlib = "latest"
+}

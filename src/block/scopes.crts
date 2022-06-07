@@ -1,0 +1,130 @@
+import println from <stdlib/io>;
+
+// Use double colons to modify the scope property of a variable.
+// That is called scope modifier.
+
+// GLOBAL:
+
+// This is called global scope.
+
+var a_variable: str = "Global.";
+
+void a_function()
+{
+
+    var a_variable: str = "Local.";
+
+    // pg = Global scope.
+
+    println(a_variable);     // Result: "Local.".
+    println(pg::a_variable); // Result: "Global.".
+
+};
+
+
+
+
+
+
+
+
+// NON-LAMDA FUNCTIONS:
+
+// GLOBAL SCOPE:
+
+var a_variable: str = "Global.";
+
+void function_1()
+{
+
+    // SECOND PARENT SCOPE:
+
+    var a_variable: int = 1;
+
+    void function_2()
+    {
+
+        // FIRST PARENT SCOPE:
+
+        var a_variable: int = 2
+
+        void function_3()
+        {
+
+            // LOCAL SCOPE.
+
+            var a_variable: int = 3;
+
+            println(a_variable)         // Result: 3. >> function_3 scope.
+
+            // p1 = function_2
+            // p2 = function_1
+            // p3 = Global scope (gs).
+
+            println(p1::a_variable);  // Result: 2. >> function_2 scope.
+            println(p2::a_variable);  // Result: 1. >> function_1 scope.
+
+            println(g::a_variable);   // Result: "Global.".
+
+        };
+
+        // Higher number: Higher parent scope. If the number is replaced by 
+        // the alphabet 'g', then that means it references a variable inside a 
+        // global scope.
+
+    };
+
+};
+
+
+
+
+
+
+
+
+// EXTENDED CLASSES:
+
+// The same system is applied. But how about a class that is extended?
+// Instead of using 'p' scope modifiers, we are going to use 'e' scope modifiers.
+
+// GLOBAL SCOPE.
+
+class class_1 { // eg
+    a_variable = "class 1";
+};
+
+class class_2 {
+
+    // SECOND PARENT SCOPE..
+
+    const a_variable = "class 2";
+
+    class class_3 {
+        const a_variable = "class 3";
+    };
+
+    class class_4 {
+
+        // FIRST PARENT SCOPE.
+
+        class class_5 {
+            const a_variable = "class 5";
+        };
+
+        // Note: You can not extend your own parent class.
+        // Which means you can not extend class_2 and class_4.
+        class class_6 extend class_1, class_3, class_5 {
+
+            // LOCAL SCOPE.
+
+            const class_5 = e1::a_variable; // Result: "class 5".
+            const class_3 = e2::a_variable; // Result: "class 3".
+
+            const class_1 = eg::a_variable; // Result: "class 1".
+
+        };
+
+    };
+
+};

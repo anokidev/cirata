@@ -1,0 +1,28 @@
+// This is a line comment. A comment won't be compiled.
+
+/*
+    This is a block comment.
+    It supports multiline comments!
+*/
+
+// This will import the println function from the standard library IO package.
+import println from <stdlib/io>;
+
+// A main file requires a function called main, the entrypoint to the program.
+// You will learn about what is a function later on.
+int main()
+{
+    println("Hello, world!"); // Print 'Hello, world!' to the screen.
+    return 0;                 // 0 = Success, 1 = Failure.
+};
+
+/*
+
+    Cirata code is composed of statements and blocks.
+    Function main is a block. While println is a statement.
+    fnc and return are called keywords.
+
+*/
+
+// Semicolons are optional, except for more than 1 statement in a single line.
+// println("A statement.") ; println("Another statement.")

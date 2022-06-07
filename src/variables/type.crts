@@ -1,0 +1,32 @@
+// If you want to declare a custom data type, use the type keyword.
+type info = array<str, int, str>;
+
+// You can use '</' and '/>' for multiline a complex variable's members's type.
+// array, tuple, and hash are supported.
+type family_biodata = hash</
+    name: str, 
+    age: int, 
+    city: str, 
+    dad_name: str, 
+    dad_age: int, 
+    mom_name: str, 
+    mom_age: int
+/>;
+
+// How to use a custom data type:
+
+var biodata: info = ["Anoki", 15, "Bandung"];
+
+var family: family_biodata = {
+
+    name : "Anoki",
+    age : 15,
+    city : "Bandung",
+
+    dad_name : "Budi",
+    dad_age : 50,
+
+    mom_name : "Ana",
+    mom_age : 50
+
+};

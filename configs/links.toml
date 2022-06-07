@@ -1,0 +1,11 @@
+[general]
+root = "."
+src  = "./src"
+test = "./test"
+
+[alias]
+src  = "./src"
+test = "./test"
+
+[mount]
+main = "./src/main.crts"

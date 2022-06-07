@@ -1,0 +1,111 @@
+import println from <stdlib/io>;
+import array from <stdlib/complex>;
+
+/*
+
+    This is how you declare a function.
+
+    [RETURN KEYWORD][FUNCTION NAME]([PARAMETERS]) {[MAIN BODY]};
+
+    void a_function()
+    {
+        println("Hello!");
+    };
+
+*/
+
+
+
+
+
+
+
+
+// Parameters.
+
+// You can do this.
+void say_hello(name: str, age: int)
+{
+    println(f"Hello there, my name is $(name). I am $(age) years old.");
+};
+
+void run()
+{
+    say_hello("Anoki", 15); // Result: "Hello there, my name is Anoki. I am 15 years old.".
+};
+
+
+
+
+
+
+
+
+// 'return' keyword.
+
+// All variables declared inside a function are local.
+// If you don't want to declare a global variable, you can return a value.
+
+str get_message(name: str)
+{
+    return f"Hello there, my name is $(name).";
+};
+
+// void means don't return anything.
+void init()
+{
+    message = get_message("Anoki");
+    println(message); // Result: "Hello there, my name is Anoki.".
+};
+
+// Multiple return values and multiple accepted return values are supported.
+
+union<str, int> say_my_name()
+{
+    return "Anoki", 15;
+};
+
+accept<int, float> example(
+{
+    return array.random([14, 14.535]);
+};
+
+
+
+
+
+
+
+
+
+// Lamda / anonymous functions.
+
+// [DECLARATION KEYWORD] [FUNCTION NAME]: lamda<[RETURN TYPE]> = [PARAMETERS] => [RETURN VALUE];
+var lamda_function: lamda<str, bool> = name: str => f"Hello, my name is $(name).", true;
+
+// [DECLARATION KEYWORD] [FUNCTION NAME]: lamda<[RETURN TYPE]> = ([PARAMETERS]) => {[RETURN VALUE]};
+var lamda_function: lamda<str, bool> = (name: str) => {f"Hello, my name is $(name).", true};
+
+// [DECLARATION KEYWORD] [FUNCTION NAME]: lamda<[RETURN TYPE]> = ([PARAMETERS]) => [RETURN VALUE];
+var lamda_function: lamda<str, bool> = (name: str) => f"Hello, my name is $(name).", true;
+
+// [DECLARATION KEYWORD] [FUNCTION NAME]: lamda<[RETURN TYPE]> = [PARAMETERS] => {[RETURN VALUE]};
+var lamda_function: lamda<str, bool> = name: str => {f"Hello, my name is $(name).", true};
+
+
+
+
+
+
+
+
+/*
+    If you want a file to be the main entry point of the program,
+    the file needs to have a function called 'main'.
+
+*/
+
+int main()
+{
+    return 0; // Function 'main' needs to return a value. 0 = Success, 1 = Error.
+};

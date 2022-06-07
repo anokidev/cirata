@@ -1,0 +1,49 @@
+/*
+
+    A variable is a container that contains data.
+    Programming languages resolve around manipulating data.
+    If a programming language can manipulate data, then the 
+    language is called 'turing complete.'.
+
+*/
+
+/*
+
+    There are 2 keywords that can be used to declare a variable.
+    var and const.
+
+    [KEYWORD] [VARIABLE NAME]: [DATATYPE] = [VALUE];
+
+*/
+
+// This is how you declare a variable.
+var a_variable: str = "A string.";
+
+// Changing a variable's value is called redeclaring.
+// A variable's type can not be changed.
+var a_variable = "The value has been changed.";
+
+// If you want to make a variable's value unchangeable/immutable, use const.
+const A_CONSTANT: str = "Unchangeable";
+
+// const A_CONSTANT: str = "This will results in an error.";
+
+/*
+
+    Datatype determines what kind of value inside a variable.
+    If you want the compiler to automatically determine the type:
+
+    [KEYWORD] [VARIABLE NAME] := [VALUE];
+
+*/
+
+var a_string := "Hello, world!";
+
+/*
+
+    You can declare multiple variables in a single statement.
+
+*/
+
+var first: str, second: str, third: str = "First", "Second", "Third";
+var first, second, third := "First", "Second", "Third";

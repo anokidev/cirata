@@ -1,0 +1,160 @@
+import println from <stdlib/io>;
+
+/*
+
+    There are several datatypes that you can use.
+    Datatypes in Cirata are divided into 3 catageories:
+    - primitive (str, char, int, float, bool)
+    - complex (array, tuple, hash)
+    - special (void, union, accept, lamda)
+
+*/
+
+
+
+
+
+
+
+
+// PRIMITIVE:
+
+// Let's start with a character (chr).
+var a_character: char = "a";
+var a_character: char = 'a';
+
+// A string, which basically means a sequence full of characters.
+var a_string: str = "A sequence full of characters.";
+var a_string: str = 'A sequence full of characters.';
+
+// Now, how about integers? Integers means numbers without decimal points.
+var an_int: int = 1000;
+
+// Let's move on to float, integers that supports up to 15 decimal points. 
+var a_float: float = 1000.23242;
+
+
+
+
+
+
+
+
+// COMPLEX:
+
+// Array or list, a collection full of variables.
+var an_array: array<str, int, str> = ["Anoki", 14, "Bandung"];
+
+// This function shows you how to access an array's member, and how to modify an array's member.
+void how_to_use_an_array()
+{
+    // Starts at 0, not 1.
+    println(an_array[0]); // Result: "Anoki".
+    println(an_array[1]); // Result: 14.
+
+    // You can modify an array's member.
+    var william: str = "William";
+    an_array[0] = william;
+    println(an_array[0]); // William.
+};
+
+// Tuple, an array that it's members are read only.
+var an_tuple: tuple<str, int, str> = ("Anoki", 14, "Bandung");
+
+void a_wrong_way_of_using_a_tuple()
+{
+    an_tuple[0] = "William"; // ERROR.
+};
+
+// Hash. Also known as dictionary.
+var a_hash: hash<name: str, age: int, city: str> = {
+    name : "Anoki",
+    age : 14,
+    city : "Bandung"
+};
+
+void how_to_use_a_hash()
+{
+    println(a_hash['name']); // Result: "Anoki".
+};
+
+
+
+
+
+
+
+
+// SPECIAL:
+
+// Void: Means empty.
+
+/*
+
+    void type will be applied if:
+    - A variable is declared without a value.
+    - A variable's value is from a function that doesn't return a value.
+
+*/
+
+var a_void_str: str?; // Use a question mark next to the type in order to avoid an error.
+
+void empty_return_value()
+{
+    // None.
+};
+
+void void_demo()
+{
+    var a_void_var: str? = empty_return_value();
+};
+
+// Union, behaves like an array, perfect for multiple return values.
+union<str, int> say_my_name()
+{
+    return "Anoki", 15;
+};
+
+var name: str, age: int = say_my_name();
+
+/*
+
+    You can make a variable accepts multiple type using the accept type.
+
+*/
+
+// any type, accept all types.
+var accept_all: any = "Hello";
+var accept_all = 100;
+
+// You can do this.
+var int_or_float: accept<int, float> = 100; // Integer.
+var int_or_float = 100.5;                   // Float.
+
+// Lamda or anonymous functions.
+var lamda_function: lamda<str> = name: str => f"Hello, my name is $(name).";
+
+// Dynamic class.
+
+class biodata {
+    static var name: str = "Anoki";
+    dynamic var age: int = 15;
+    staticonly var city: str = "Bandung";
+
+};
+
+void run()
+{
+    // new_class is a dynamic class.
+    var new_class: dc = new biodata(); // <<<<<<<<<<<<
+
+    println(biodata.name) // "Anoki".
+    println(new_class.name) // "Anoki".
+
+    println(biodata.age) // ERROR.
+    println(new_class.age) // 15.
+
+    println(biodata.city) // "Bandung".
+    println(new_class.city) // ERROR.
+
+};
